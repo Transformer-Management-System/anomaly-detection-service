@@ -1,0 +1,265 @@
+{
+  "transformer_id": "1759682556940",
+  "baseline_path": "inspections\\1759682556940\\runs\\471cf030-4c26-4b69-bb90-45d0d8285994\\baseline.png",
+  "maintenance_path": "inspections\\1759682556940\\runs\\471cf030-4c26-4b69-bb90-45d0d8285994\\maintenance.png",
+  "warp_model": "affine",
+  "warp_success": true,
+  "warp_score": 0.73498776508127,
+  "mean_ssim": 0.7695960101003816,
+  "image_level_label": "Faulty",
+  "t_pot": 8.0,
+  "t_fault": 12.0,
+  "base_t_pot": 8.0,
+  "base_t_fault": 12.0,
+  "slider_percent": 50.0,
+  "scale_applied": 1.0,
+  "threshold_source": "slider_scaled",
+  "ratio": 1.5,
+  "blobs": [
+    {
+      "label": 1,
+      "bbox": [
+        348,
+        332,
+        15,
+        23
+      ],
+      "area": 166,
+      "centroid": [
+        354.81325301204816,
+        343.1144578313253
+      ],
+      "mean_deltaE": 46.8499870300293,
+      "peak_deltaE": 56.295352935791016,
+      "mean_hsv": [
+        4.27710843373494,
+        162.28313253012047,
+        200.5
+      ],
+      "elongation": 1.9042556485917435,
+      "classification": "Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 53.34720657348633
+    },
+    {
+      "label": 2,
+      "bbox": [
+        370,
+        332,
+        6,
+        23
+      ],
+      "area": 74,
+      "centroid": [
+        373.68918918918916,
+        342.14864864864865
+      ],
+      "mean_deltaE": 48.43889617919922,
+      "peak_deltaE": 57.19393539428711,
+      "mean_hsv": [
+        4.243243243243243,
+        153.09459459459458,
+        206.0
+      ],
+      "elongation": 32.55954162695262,
+      "classification": "Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 54.06191970825195
+    },
+    {
+      "label": 3,
+      "bbox": [
+        392,
+        332,
+        7,
+        15
+      ],
+      "area": 48,
+      "centroid": [
+        394.8125,
+        339.1041666666667
+      ],
+      "mean_deltaE": 47.18724060058594,
+      "peak_deltaE": 56.6573486328125,
+      "mean_hsv": [
+        4.208333333333333,
+        156.91666666666666,
+        201.91666666666666
+      ],
+      "elongation": 7.303192203795498,
+      "classification": "Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 53.109305419921874
+    },
+    {
+      "label": 4,
+      "bbox": [
+        400,
+        332,
+        8,
+        23
+      ],
+      "area": 83,
+      "centroid": [
+        404.3855421686747,
+        343.2168674698795
+      ],
+      "mean_deltaE": 46.6187629699707,
+      "peak_deltaE": 56.53811264038086,
+      "mean_hsv": [
+        4.771084337349397,
+        167.0722891566265,
+        200.36144578313252
+      ],
+      "elongation": 14.734653785436272,
+      "classification": "Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 52.9853727722168
+    },
+    {
+      "label": 6,
+      "bbox": [
+        419,
+        332,
+        7,
+        23
+      ],
+      "area": 79,
+      "centroid": [
+        422.0379746835443,
+        343.11392405063293
+      ],
+      "mean_deltaE": 46.93632125854492,
+      "peak_deltaE": 56.15345764160156,
+      "mean_hsv": [
+        6.2405063291139244,
+        161.45569620253164,
+        202.1772151898734
+      ],
+      "elongation": 17.165249759674243,
+      "classification": "Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 52.86160308837891
+    },
+    {
+      "label": 10,
+      "bbox": [
+        379,
+        359,
+        19,
+        22
+      ],
+      "area": 266,
+      "centroid": [
+        389.09022556390977,
+        369.7105263157895
+      ],
+      "mean_deltaE": 45.14396286010742,
+      "peak_deltaE": 77.89356994628906,
+      "mean_hsv": [
+        13.924812030075188,
+        191.84586466165413,
+        165.55263157894737
+      ],
+      "elongation": 1.337472490060077,
+      "classification": "Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 66.12372711181641
+    },
+    {
+      "label": 11,
+      "bbox": [
+        1022,
+        844,
+        44,
+        44
+      ],
+      "area": 476,
+      "centroid": [
+        1042.189075630252,
+        864.7478991596639
+      ],
+      "mean_deltaE": 77.94151306152344,
+      "peak_deltaE": 83.59376525878906,
+      "mean_hsv": [
+        29.680672268907564,
+        193.92016806722688,
+        217.09453781512605
+      ],
+      "elongation": 41.123891005860045,
+      "classification": "Potentially Faulty",
+      "subtype": "PointOverload",
+      "confidence": 1.0,
+      "severity": 83.7128643798828
+    },
+    {
+      "label": 12,
+      "bbox": [
+        980,
+        963,
+        9,
+        8
+      ],
+      "area": 62,
+      "centroid": [
+        984.1129032258065,
+        966.4032258064516
+      ],
+      "mean_deltaE": 80.54544067382812,
+      "peak_deltaE": 83.0884780883789,
+      "mean_hsv": [
+        32.29032258064516,
+        187.4516129032258,
+        217.8548387096774
+      ],
+      "elongation": 1.2919498977417387,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 82.3812631225586
+    },
+    {
+      "label": 13,
+      "bbox": [
+        975,
+        978,
+        11,
+        23
+      ],
+      "area": 187,
+      "centroid": [
+        980.0909090909091,
+        988.1711229946524
+      ],
+      "mean_deltaE": 77.77579498291016,
+      "peak_deltaE": 83.46455383300781,
+      "mean_hsv": [
+        29.529411764705884,
+        194.48128342245988,
+        219.31550802139037
+      ],
+      "elongation": 4.270064292643984,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 82.12405029296875
+    }
+  ],
+  "thresholds_used": {
+    "t_pot": 8.0,
+    "t_fault": 12.0,
+    "base_t_pot": 8.0,
+    "base_t_fault": 12.0,
+    "slider_percent": 50.0,
+    "scale_applied": 1.0,
+    "source": "slider_scaled",
+    "ratio": 1.5,
+    "mean_ssim": 0.7695960101003816
+  }
+}

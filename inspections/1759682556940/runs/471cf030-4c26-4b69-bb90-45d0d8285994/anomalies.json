@@ -1,0 +1,133 @@
+{
+  "runId": "471cf030-4c26-4b69-bb90-45d0d8285994",
+  "inspectionId": "1759682556940",
+  "generatedAt": "2025-10-05T16:43:06.313766Z",
+  "imageLevelLabel": "Faulty",
+  "anomalies": [
+    {
+      "id": "ai_1",
+      "x": 348,
+      "y": 332,
+      "w": 15,
+      "h": 23,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_2",
+      "x": 370,
+      "y": 332,
+      "w": 6,
+      "h": 23,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_3",
+      "x": 392,
+      "y": 332,
+      "w": 7,
+      "h": 15,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_4",
+      "x": 400,
+      "y": 332,
+      "w": 8,
+      "h": 23,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_5",
+      "x": 419,
+      "y": 332,
+      "w": 7,
+      "h": 23,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_6",
+      "x": 379,
+      "y": 359,
+      "w": 19,
+      "h": 22,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_7",
+      "x": 1022,
+      "y": 844,
+      "w": 44,
+      "h": 44,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "PointOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_8",
+      "x": 980,
+      "y": 963,
+      "w": 9,
+      "h": 8,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_9",
+      "x": 975,
+      "y": 978,
+      "w": 11,
+      "h": 23,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    }
+  ],
+  "thresholdsUsed": {
+    "t_pot": 8.0,
+    "t_fault": 12.0,
+    "base_t_pot": 8.0,
+    "base_t_fault": 12.0,
+    "slider_percent": 50.0,
+    "scale_applied": 1.0,
+    "source": "slider_scaled",
+    "ratio": 1.5,
+    "mean_ssim": 0.7695960101003816
+  },
+  "paths": {
+    "baseline": "inspections\\1759682556940\\runs\\471cf030-4c26-4b69-bb90-45d0d8285994\\baseline.png",
+    "maintenance": "inspections\\1759682556940\\runs\\471cf030-4c26-4b69-bb90-45d0d8285994\\maintenance.png",
+    "overlay": "inspections\\1759682556940\\runs\\471cf030-4c26-4b69-bb90-45d0d8285994\\overlay.png",
+    "report": "inspections\\1759682556940\\runs\\471cf030-4c26-4b69-bb90-45d0d8285994\\report.json"
+  }
+}

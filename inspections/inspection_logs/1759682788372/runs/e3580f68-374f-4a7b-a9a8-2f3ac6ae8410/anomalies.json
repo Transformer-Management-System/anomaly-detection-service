@@ -1,0 +1,133 @@
+{
+  "runId": "e3580f68-374f-4a7b-a9a8-2f3ac6ae8410",
+  "inspectionId": "1759682788372",
+  "generatedAt": "2025-10-05T16:46:52.483060Z",
+  "imageLevelLabel": "Potentially Faulty",
+  "anomalies": [
+    {
+      "id": "ai_1",
+      "x": 1480,
+      "y": 491,
+      "w": 107,
+      "h": 173,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "FullWireOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_2",
+      "x": 1037,
+      "y": 540,
+      "w": 260,
+      "h": 186,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "FullWireOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_3",
+      "x": 1446,
+      "y": 767,
+      "w": 114,
+      "h": 63,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "FullWireOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_4",
+      "x": 1372,
+      "y": 797,
+      "w": 53,
+      "h": 52,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_5",
+      "x": 1304,
+      "y": 817,
+      "w": 47,
+      "h": 40,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_6",
+      "x": 1938,
+      "y": 821,
+      "w": 96,
+      "h": 60,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "FullWireOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_7",
+      "x": 1238,
+      "y": 836,
+      "w": 33,
+      "h": 29,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_8",
+      "x": 2062,
+      "y": 1025,
+      "w": 19,
+      "h": 27,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_9",
+      "x": 2136,
+      "y": 1067,
+      "w": 7,
+      "h": 5,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    }
+  ],
+  "thresholdsUsed": {
+    "t_pot": 10.0,
+    "t_fault": 14.0,
+    "base_t_pot": 10.0,
+    "base_t_fault": 14.0,
+    "slider_percent": 50.0,
+    "scale_applied": 1.0,
+    "source": "slider_scaled",
+    "ratio": 1.4,
+    "mean_ssim": 0.48213694694767656
+  },
+  "paths": {
+    "baseline": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\baseline.png",
+    "maintenance": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\maintenance.png",
+    "overlay": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\overlay.png",
+    "report": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\report.json"
+  }
+}

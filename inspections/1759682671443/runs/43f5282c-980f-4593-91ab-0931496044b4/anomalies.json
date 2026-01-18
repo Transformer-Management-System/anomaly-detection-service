@@ -1,0 +1,49 @@
+{
+  "runId": "43f5282c-980f-4593-91ab-0931496044b4",
+  "inspectionId": "1759682671443",
+  "generatedAt": "2025-10-05T16:44:57.958235Z",
+  "imageLevelLabel": "Faulty",
+  "anomalies": [
+    {
+      "id": "ai_1",
+      "x": 1180,
+      "y": 808,
+      "w": 86,
+      "h": 150,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "PointOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_2",
+      "x": 1151,
+      "y": 959,
+      "w": 77,
+      "h": 71,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    }
+  ],
+  "thresholdsUsed": {
+    "t_pot": 10.0,
+    "t_fault": 14.0,
+    "base_t_pot": 10.0,
+    "base_t_fault": 14.0,
+    "slider_percent": 50.0,
+    "scale_applied": 1.0,
+    "source": "slider_scaled",
+    "ratio": 1.4,
+    "mean_ssim": 0.5443564125843475
+  },
+  "paths": {
+    "baseline": "inspections\\1759682671443\\runs\\43f5282c-980f-4593-91ab-0931496044b4\\baseline.png",
+    "maintenance": "inspections\\1759682671443\\runs\\43f5282c-980f-4593-91ab-0931496044b4\\maintenance.png",
+    "overlay": "inspections\\1759682671443\\runs\\43f5282c-980f-4593-91ab-0931496044b4\\overlay.png",
+    "report": "inspections\\1759682671443\\runs\\43f5282c-980f-4593-91ab-0931496044b4\\report.json"
+  }
+}

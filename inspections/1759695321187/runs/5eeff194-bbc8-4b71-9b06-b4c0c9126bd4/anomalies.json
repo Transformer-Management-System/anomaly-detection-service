@@ -1,0 +1,73 @@
+{
+  "runId": "5eeff194-bbc8-4b71-9b06-b4c0c9126bd4",
+  "inspectionId": "1759695321187",
+  "generatedAt": "2025-10-05T20:16:13.257696Z",
+  "imageLevelLabel": "Faulty",
+  "anomalies": [
+    {
+      "id": "ai_1",
+      "x": 840,
+      "y": 250,
+      "w": 179,
+      "h": 50,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "PointOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_2",
+      "x": 678,
+      "y": 302,
+      "w": 135,
+      "h": 129,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_3",
+      "x": 853,
+      "y": 312,
+      "w": 100,
+      "h": 40,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "PointOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_4",
+      "x": 826,
+      "y": 413,
+      "w": 175,
+      "h": 66,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "FullWireOverload",
+      "comment": "",
+      "source": "ai"
+    }
+  ],
+  "thresholdsUsed": {
+    "t_pot": 10.0,
+    "t_fault": 14.0,
+    "base_t_pot": 10.0,
+    "base_t_fault": 14.0,
+    "slider_percent": 50.0,
+    "scale_applied": 1.0,
+    "source": "slider_scaled",
+    "ratio": 1.4,
+    "mean_ssim": 0.6785224389619211
+  },
+  "paths": {
+    "baseline": "inspections\\1759695321187\\runs\\5eeff194-bbc8-4b71-9b06-b4c0c9126bd4\\baseline.png",
+    "maintenance": "inspections\\1759695321187\\runs\\5eeff194-bbc8-4b71-9b06-b4c0c9126bd4\\maintenance.png",
+    "overlay": "inspections\\1759695321187\\runs\\5eeff194-bbc8-4b71-9b06-b4c0c9126bd4\\overlay.png",
+    "report": "inspections\\1759695321187\\runs\\5eeff194-bbc8-4b71-9b06-b4c0c9126bd4\\report.json"
+  }
+}

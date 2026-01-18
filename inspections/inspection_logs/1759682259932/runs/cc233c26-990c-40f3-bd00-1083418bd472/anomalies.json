@@ -1,0 +1,109 @@
+{
+  "runId": "cc233c26-990c-40f3-bd00-1083418bd472",
+  "inspectionId": "1759682259932",
+  "generatedAt": "2025-10-05T16:38:06.683199Z",
+  "imageLevelLabel": "Faulty",
+  "anomalies": [
+    {
+      "id": "ai_1",
+      "x": 447,
+      "y": 91,
+      "w": 4,
+      "h": 46,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "FullWireOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_2",
+      "x": 482,
+      "y": 110,
+      "w": 11,
+      "h": 21,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_3",
+      "x": 458,
+      "y": 119,
+      "w": 17,
+      "h": 15,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_4",
+      "x": 76,
+      "y": 134,
+      "w": 72,
+      "h": 62,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "PointOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_5",
+      "x": 160,
+      "y": 134,
+      "w": 76,
+      "h": 77,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "FullWireOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_6",
+      "x": 249,
+      "y": 135,
+      "w": 73,
+      "h": 73,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "PointOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_7",
+      "x": 485,
+      "y": 134,
+      "w": 7,
+      "h": 7,
+      "confidence": 1.0,
+      "severity": "Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    }
+  ],
+  "thresholdsUsed": {
+    "t_pot": 8.0,
+    "t_fault": 12.0,
+    "base_t_pot": 8.0,
+    "base_t_fault": 12.0,
+    "slider_percent": 50.0,
+    "scale_applied": 1.0,
+    "source": "slider_scaled",
+    "ratio": 1.5,
+    "mean_ssim": 0.7856739947553113
+  },
+  "paths": {
+    "baseline": "inspections\\1759682259932\\runs\\cc233c26-990c-40f3-bd00-1083418bd472\\baseline.png",
+    "maintenance": "inspections\\1759682259932\\runs\\cc233c26-990c-40f3-bd00-1083418bd472\\maintenance.png",
+    "overlay": "inspections\\1759682259932\\runs\\cc233c26-990c-40f3-bd00-1083418bd472\\overlay.png",
+    "report": "inspections\\1759682259932\\runs\\cc233c26-990c-40f3-bd00-1083418bd472\\report.json"
+  }
+}

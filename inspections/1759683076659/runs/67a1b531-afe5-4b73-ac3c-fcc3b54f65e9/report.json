@@ -1,0 +1,447 @@
+{
+  "transformer_id": "1759683076659",
+  "baseline_path": "inspections\\1759683076659\\runs\\67a1b531-afe5-4b73-ac3c-fcc3b54f65e9\\baseline.png",
+  "maintenance_path": "inspections\\1759683076659\\runs\\67a1b531-afe5-4b73-ac3c-fcc3b54f65e9\\maintenance.png",
+  "warp_model": "affine",
+  "warp_success": true,
+  "warp_score": 0.7164338608889509,
+  "mean_ssim": 0.9485418932214229,
+  "image_level_label": "Faulty",
+  "t_pot": 8.0,
+  "t_fault": 12.0,
+  "base_t_pot": 8.0,
+  "base_t_fault": 12.0,
+  "slider_percent": 50.0,
+  "scale_applied": 1.0,
+  "threshold_source": "slider_scaled",
+  "ratio": 1.5,
+  "blobs": [
+    {
+      "label": 2,
+      "bbox": [
+        1244,
+        794,
+        7,
+        23
+      ],
+      "area": 79,
+      "centroid": [
+        1248.4810126582279,
+        803.8227848101266
+      ],
+      "mean_deltaE": 42.81572341918945,
+      "peak_deltaE": 63.01648712158203,
+      "mean_hsv": [
+        50.91139240506329,
+        147.67088607594937,
+        196.72151898734177
+      ],
+      "elongation": 22.767184412015496,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 55.331181640625005
+    },
+    {
+      "label": 3,
+      "bbox": [
+        1258,
+        794,
+        7,
+        16
+      ],
+      "area": 50,
+      "centroid": [
+        1260.28,
+        801.5
+      ],
+      "mean_deltaE": 39.19343185424805,
+      "peak_deltaE": 55.0063362121582,
+      "mean_hsv": [
+        6.56,
+        145.86,
+        182.9
+      ],
+      "elongation": 14.991535538438312,
+      "classification": "Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 48.93117446899414
+    },
+    {
+      "label": 4,
+      "bbox": [
+        1262,
+        794,
+        34,
+        65
+      ],
+      "area": 1114,
+      "centroid": [
+        1277.4883303411132,
+        829.0017953321365
+      ],
+      "mean_deltaE": 58.105682373046875,
+      "peak_deltaE": 81.70484924316406,
+      "mean_hsv": [
+        13.797127468581687,
+        210.19658886894075,
+        164.01885098743267
+      ],
+      "elongation": 4.289357517769215,
+      "classification": "Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 77.83518249511718
+    },
+    {
+      "label": 5,
+      "bbox": [
+        1308,
+        794,
+        10,
+        22
+      ],
+      "area": 59,
+      "centroid": [
+        1312.406779661017,
+        804.3898305084746
+      ],
+      "mean_deltaE": 42.878780364990234,
+      "peak_deltaE": 57.04861831665039,
+      "mean_hsv": [
+        49.03389830508475,
+        142.22033898305085,
+        204.23728813559322
+      ],
+      "elongation": 72.44966321016881,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 51.675683135986326
+    },
+    {
+      "label": 6,
+      "bbox": [
+        1321,
+        794,
+        7,
+        22
+      ],
+      "area": 65,
+      "centroid": [
+        1323.5230769230768,
+        804.4461538461538
+      ],
+      "mean_deltaE": 43.59321212768555,
+      "peak_deltaE": 56.13199234008789,
+      "mean_hsv": [
+        53.55384615384615,
+        145.1846153846154,
+        200.0
+      ],
+      "elongation": 19.876627925583207,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 51.44148025512696
+    },
+    {
+      "label": 8,
+      "bbox": [
+        1331,
+        802,
+        5,
+        14
+      ],
+      "area": 37,
+      "centroid": [
+        1333.2972972972973,
+        808.4054054054054
+      ],
+      "mean_deltaE": 41.9791145324707,
+      "peak_deltaE": 51.43779754638672,
+      "mean_hsv": [
+        77.54054054054055,
+        139.16216216216216,
+        191.7027027027027
+      ],
+      "elongation": 10.965742936243418,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 47.83932434082031
+    },
+    {
+      "label": 9,
+      "bbox": [
+        1204,
+        809,
+        9,
+        10
+      ],
+      "area": 71,
+      "centroid": [
+        1207.7464788732395,
+        813.5070422535211
+      ],
+      "mean_deltaE": 52.71480178833008,
+      "peak_deltaE": 64.91414642333984,
+      "mean_hsv": [
+        33.36619718309859,
+        189.4788732394366,
+        220.30985915492957
+      ],
+      "elongation": 1.4892045321944347,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 60.389408569335934
+    },
+    {
+      "label": 12,
+      "bbox": [
+        1148,
+        868,
+        19,
+        30
+      ],
+      "area": 405,
+      "centroid": [
+        1156.469135802469,
+        881.1259259259259
+      ],
+      "mean_deltaE": 73.99020385742188,
+      "peak_deltaE": 74.7640609741211,
+      "mean_hsv": [
+        34.7679012345679,
+        187.0962962962963,
+        225.42716049382716
+      ],
+      "elongation": 3.097704972508608,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 76.47951812744141
+    },
+    {
+      "label": 14,
+      "bbox": [
+        1239,
+        871,
+        10,
+        17
+      ],
+      "area": 119,
+      "centroid": [
+        1243.4453781512605,
+        878.5294117647059
+      ],
+      "mean_deltaE": 60.72442626953125,
+      "peak_deltaE": 63.075435638427734,
+      "mean_hsv": [
+        35.0,
+        186.4033613445378,
+        226.32773109243698
+      ],
+      "elongation": 3.8457430772619574,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 62.73003189086914
+    },
+    {
+      "label": 15,
+      "bbox": [
+        1262,
+        873,
+        9,
+        30
+      ],
+      "area": 192,
+      "centroid": [
+        1266.1510416666667,
+        886.3177083333334
+      ],
+      "mean_deltaE": 60.60432434082031,
+      "peak_deltaE": 62.91971206665039,
+      "mean_hsv": [
+        34.973958333333336,
+        186.35416666666666,
+        225.94791666666666
+      ],
+      "elongation": 12.630154742424995,
+      "classification": "Potentially Faulty",
+      "subtype": "FullWireOverload",
+      "confidence": 1.0,
+      "severity": 62.95355697631836
+    },
+    {
+      "label": 16,
+      "bbox": [
+        1283,
+        878,
+        13,
+        38
+      ],
+      "area": 318,
+      "centroid": [
+        1289.198113207547,
+        894.0943396226415
+      ],
+      "mean_deltaE": 58.24382781982422,
+      "peak_deltaE": 64.38401794433594,
+      "mean_hsv": [
+        34.81761006289308,
+        187.36163522012578,
+        225.23584905660377
+      ],
+      "elongation": 10.341729036632778,
+      "classification": "Potentially Faulty",
+      "subtype": "PointOverload",
+      "confidence": 1.0,
+      "severity": 63.517941894531255
+    },
+    {
+      "label": 17,
+      "bbox": [
+        1094,
+        880,
+        7,
+        26
+      ],
+      "area": 114,
+      "centroid": [
+        1097.5701754385964,
+        892.2017543859649
+      ],
+      "mean_deltaE": 67.89285278320312,
+      "peak_deltaE": 69.8836669921875,
+      "mean_hsv": [
+        35.00877192982456,
+        186.06140350877192,
+        226.33333333333334
+      ],
+      "elongation": 17.887409554414223,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 69.65734130859374
+    },
+    {
+      "label": 18,
+      "bbox": [
+        1307,
+        887,
+        11,
+        32
+      ],
+      "area": 216,
+      "centroid": [
+        1312.1666666666667,
+        901.9814814814815
+      ],
+      "mean_deltaE": 55.93370819091797,
+      "peak_deltaE": 59.87417984008789,
+      "mean_hsv": [
+        34.782407407407405,
+        186.60185185185185,
+        224.62037037037038
+      ],
+      "elongation": 11.727340351942434,
+      "classification": "Potentially Faulty",
+      "subtype": "PointOverload",
+      "confidence": 1.0,
+      "severity": 59.37799118041992
+    },
+    {
+      "label": 19,
+      "bbox": [
+        1066,
+        890,
+        25,
+        32
+      ],
+      "area": 472,
+      "centroid": [
+        1077.9216101694915,
+        903.7097457627119
+      ],
+      "mean_deltaE": 67.42855834960938,
+      "peak_deltaE": 70.20633697509766,
+      "mean_hsv": [
+        34.91525423728814,
+        186.32838983050848,
+        225.79872881355934
+      ],
+      "elongation": 3.087129862169079,
+      "classification": "Potentially Faulty",
+      "subtype": "FullWireOverload",
+      "confidence": 1.0,
+      "severity": 71.45522552490235
+    },
+    {
+      "label": 20,
+      "bbox": [
+        1331,
+        898,
+        8,
+        25
+      ],
+      "area": 122,
+      "centroid": [
+        1334.4918032786886,
+        908.7295081967213
+      ],
+      "mean_deltaE": 57.149349212646484,
+      "peak_deltaE": 61.304141998291016,
+      "mean_hsv": [
+        35.0,
+        186.04918032786884,
+        226.36885245901638
+      ],
+      "elongation": 13.657016602135736,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 60.2522248840332
+    },
+    {
+      "label": 21,
+      "bbox": [
+        1353,
+        902,
+        7,
+        22
+      ],
+      "area": 119,
+      "centroid": [
+        1355.6218487394958,
+        912.3865546218487
+      ],
+      "mean_deltaE": 61.54872512817383,
+      "peak_deltaE": 64.2286148071289,
+      "mean_hsv": [
+        35.0,
+        186.109243697479,
+        226.50420168067228
+      ],
+      "elongation": 12.271532632271148,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 63.75165893554687
+    }
+  ],
+  "thresholds_used": {
+    "t_pot": 8.0,
+    "t_fault": 12.0,
+    "base_t_pot": 8.0,
+    "base_t_fault": 12.0,
+    "slider_percent": 50.0,
+    "scale_applied": 1.0,
+    "source": "slider_scaled",
+    "ratio": 1.5,
+    "mean_ssim": 0.9485418932214229
+  }
+}

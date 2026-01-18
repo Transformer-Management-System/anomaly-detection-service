@@ -1,0 +1,31 @@
+{
+  "inspection_id": "1759692821605",
+  "runs": [
+    {
+      "run_id": "916ff85a-f840-428b-a4aa-8c57ba191918",
+      "timestamp": "2025-10-05T19:34:33.614059Z",
+      "slider_percent": 50.0,
+      "baseline_source_type": "inline_upload",
+      "image_level_label": "Faulty",
+      "num_anomalies": 4,
+      "paths": {
+        "baseline": "inspections\\1759692821605\\runs\\916ff85a-f840-428b-a4aa-8c57ba191918\\baseline.png",
+        "maintenance": "inspections\\1759692821605\\runs\\916ff85a-f840-428b-a4aa-8c57ba191918\\maintenance.png",
+        "overlay": "inspections\\1759692821605\\runs\\916ff85a-f840-428b-a4aa-8c57ba191918\\overlay.png",
+        "report": "inspections\\1759692821605\\runs\\916ff85a-f840-428b-a4aa-8c57ba191918\\report.json",
+        "anomalies": "inspections\\1759692821605\\runs\\916ff85a-f840-428b-a4aa-8c57ba191918\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 10.0,
+        "t_fault": 14.0,
+        "base_t_pot": 10.0,
+        "base_t_fault": 14.0,
+        "slider_percent": 50.0,
+        "scale_applied": 1.0,
+        "source": "slider_scaled",
+        "ratio": 1.4,
+        "mean_ssim": 0.6785224389619211
+      }
+    }
+  ]
+}

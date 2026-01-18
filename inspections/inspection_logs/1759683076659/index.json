@@ -1,0 +1,109 @@
+{
+  "inspection_id": "1759683076659",
+  "runs": [
+    {
+      "run_id": "18fbfa8e-4fce-4cec-9833-0e780c69e0f7",
+      "timestamp": "2025-10-05T16:52:40.453661Z",
+      "slider_percent": 50.0,
+      "baseline_source_type": "inline_upload",
+      "image_level_label": "Faulty",
+      "num_anomalies": 16,
+      "paths": {
+        "baseline": "inspections\\1759683076659\\runs\\18fbfa8e-4fce-4cec-9833-0e780c69e0f7\\baseline.png",
+        "maintenance": "inspections\\1759683076659\\runs\\18fbfa8e-4fce-4cec-9833-0e780c69e0f7\\maintenance.png",
+        "overlay": "inspections\\1759683076659\\runs\\18fbfa8e-4fce-4cec-9833-0e780c69e0f7\\overlay.png",
+        "report": "inspections\\1759683076659\\runs\\18fbfa8e-4fce-4cec-9833-0e780c69e0f7\\report.json",
+        "anomalies": "inspections\\1759683076659\\runs\\18fbfa8e-4fce-4cec-9833-0e780c69e0f7\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 8.0,
+        "t_fault": 12.0,
+        "base_t_pot": 8.0,
+        "base_t_fault": 12.0,
+        "slider_percent": 50.0,
+        "scale_applied": 1.0,
+        "source": "slider_scaled",
+        "ratio": 1.5,
+        "mean_ssim": 0.9485418932214229
+      }
+    },
+    {
+      "run_id": "67f99f53-52ab-4dcd-9a82-5e520717819b",
+      "timestamp": "2025-10-05T17:54:41.840655Z",
+      "slider_percent": 50.0,
+      "baseline_source_type": "inline_upload",
+      "image_level_label": "Faulty",
+      "num_anomalies": 16,
+      "paths": {
+        "baseline": "inspections\\1759683076659\\runs\\67f99f53-52ab-4dcd-9a82-5e520717819b\\baseline.png",
+        "maintenance": "inspections\\1759683076659\\runs\\67f99f53-52ab-4dcd-9a82-5e520717819b\\maintenance.png",
+        "overlay": "inspections\\1759683076659\\runs\\67f99f53-52ab-4dcd-9a82-5e520717819b\\overlay.png",
+        "report": "inspections\\1759683076659\\runs\\67f99f53-52ab-4dcd-9a82-5e520717819b\\report.json",
+        "anomalies": "inspections\\1759683076659\\runs\\67f99f53-52ab-4dcd-9a82-5e520717819b\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 8.0,
+        "t_fault": 12.0,
+        "base_t_pot": 8.0,
+        "base_t_fault": 12.0,
+        "slider_percent": 50.0,
+        "scale_applied": 1.0,
+        "source": "slider_scaled",
+        "ratio": 1.5,
+        "mean_ssim": 0.9485418932214229
+      }
+    },
+    {
+      "run_id": "67a1b531-afe5-4b73-ac3c-fcc3b54f65e9",
+      "timestamp": "2025-10-05T17:58:48.800286Z",
+      "slider_percent": 50.0,
+      "baseline_source_type": "inline_upload",
+      "image_level_label": "Faulty",
+      "num_anomalies": 16,
+      "paths": {
+        "baseline": "inspections\\1759683076659\\runs\\67a1b531-afe5-4b73-ac3c-fcc3b54f65e9\\baseline.png",
+        "maintenance": "inspections\\1759683076659\\runs\\67a1b531-afe5-4b73-ac3c-fcc3b54f65e9\\maintenance.png",
+        "overlay": "inspections\\1759683076659\\runs\\67a1b531-afe5-4b73-ac3c-fcc3b54f65e9\\overlay.png",
+        "report": "inspections\\1759683076659\\runs\\67a1b531-afe5-4b73-ac3c-fcc3b54f65e9\\report.json",
+        "anomalies": "inspections\\1759683076659\\runs\\67a1b531-afe5-4b73-ac3c-fcc3b54f65e9\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 8.0,
+        "t_fault": 12.0,
+        "base_t_pot": 8.0,
+        "base_t_fault": 12.0,
+        "slider_percent": 50.0,
+        "scale_applied": 1.0,
+        "source": "slider_scaled",
+        "ratio": 1.5,
+        "mean_ssim": 0.9485418932214229
+      }
+    },
+    {
+      "run_id": "a6eaa23b-f9fa-4753-aa9b-edbebdc92713",
+      "timestamp": "2025-10-05T18:00:16.165155Z",
+      "slider_percent": 50.0,
+      "baseline_source_type": "stored",
+      "image_level_label": "Faulty",
+      "num_anomalies": 16,
+      "paths": {
+        "baseline": "inspections\\1759683076659\\runs\\a6eaa23b-f9fa-4753-aa9b-edbebdc92713\\baseline.png",
+        "maintenance": "inspections\\1759683076659\\runs\\a6eaa23b-f9fa-4753-aa9b-edbebdc92713\\maintenance.png",
+        "overlay": "inspections\\1759683076659\\runs\\a6eaa23b-f9fa-4753-aa9b-edbebdc92713\\overlay.png",
+        "report": "inspections\\1759683076659\\runs\\a6eaa23b-f9fa-4753-aa9b-edbebdc92713\\report.json",
+        "anomalies": "inspections\\1759683076659\\runs\\a6eaa23b-f9fa-4753-aa9b-edbebdc92713\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 8.0,
+        "t_fault": 12.0,
+        "base_t_pot": 8.0,
+        "base_t_fault": 12.0,
+        "slider_percent": 50.0,
+        "scale_applied": 1.0,
+        "source": "slider_scaled",
+        "ratio": 1.5,
+        "mean_ssim": 0.9485418932214229
+      }
+    }
+  ]
+}

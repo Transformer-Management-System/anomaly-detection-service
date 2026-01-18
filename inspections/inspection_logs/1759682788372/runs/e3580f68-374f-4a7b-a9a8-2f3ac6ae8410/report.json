@@ -1,0 +1,265 @@
+{
+  "transformer_id": "1759682788372",
+  "baseline_path": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\baseline.png",
+  "maintenance_path": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\maintenance.png",
+  "warp_model": "affine",
+  "warp_success": true,
+  "warp_score": 0.499304970791478,
+  "mean_ssim": 0.48213694694767656,
+  "image_level_label": "Potentially Faulty",
+  "t_pot": 10.0,
+  "t_fault": 14.0,
+  "base_t_pot": 10.0,
+  "base_t_fault": 14.0,
+  "slider_percent": 50.0,
+  "scale_applied": 1.0,
+  "threshold_source": "slider_scaled",
+  "ratio": 1.4,
+  "blobs": [
+    {
+      "label": 1,
+      "bbox": [
+        1480,
+        491,
+        107,
+        173
+      ],
+      "area": 8764,
+      "centroid": [
+        1541.2841168416248,
+        556.7455499771794
+      ],
+      "mean_deltaE": 64.02991485595703,
+      "peak_deltaE": 84.41412353515625,
+      "mean_hsv": [
+        18.047124600638977,
+        227.23094477407577,
+        231.49395253308992
+      ],
+      "elongation": 4.708598208961062,
+      "classification": "Potentially Faulty",
+      "subtype": "FullWireOverload",
+      "confidence": 1.0,
+      "severity": 100.0
+    },
+    {
+      "label": 2,
+      "bbox": [
+        1037,
+        540,
+        260,
+        186
+      ],
+      "area": 12986,
+      "centroid": [
+        1185.776605575235,
+        608.2340982596643
+      ],
+      "mean_deltaE": 59.225643157958984,
+      "peak_deltaE": 104.353515625,
+      "mean_hsv": [
+        13.439781302941629,
+        223.80648390574464,
+        215.91775758509164
+      ],
+      "elongation": 3.178205890188888,
+      "classification": "Potentially Faulty",
+      "subtype": "FullWireOverload",
+      "confidence": 1.0,
+      "severity": 100.0
+    },
+    {
+      "label": 4,
+      "bbox": [
+        1446,
+        767,
+        114,
+        63
+      ],
+      "area": 4585,
+      "centroid": [
+        1504.8322791712105,
+        800.457360959651
+      ],
+      "mean_deltaE": 100.20597076416016,
+      "peak_deltaE": 105.65859985351562,
+      "mean_hsv": [
+        33.368375136314064,
+        189.63206106870228,
+        221.839040348964
+      ],
+      "elongation": 6.524706606842403,
+      "classification": "Potentially Faulty",
+      "subtype": "FullWireOverload",
+      "confidence": 1.0,
+      "severity": 100.0
+    },
+    {
+      "label": 5,
+      "bbox": [
+        1372,
+        797,
+        53,
+        52
+      ],
+      "area": 1988,
+      "centroid": [
+        1398.838028169014,
+        823.2394366197183
+      ],
+      "mean_deltaE": 84.47478485107422,
+      "peak_deltaE": 105.84193420410156,
+      "mean_hsv": [
+        33.65090543259557,
+        189.30835010060363,
+        222.50402414486922
+      ],
+      "elongation": 1.541772635100986,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 100.0
+    },
+    {
+      "label": 6,
+      "bbox": [
+        1304,
+        817,
+        47,
+        40
+      ],
+      "area": 1425,
+      "centroid": [
+        1328.5761403508773,
+        836.9964912280702
+      ],
+      "mean_deltaE": 86.48008728027344,
+      "peak_deltaE": 105.37663269042969,
+      "mean_hsv": [
+        33.49614035087719,
+        189.29333333333332,
+        222.0561403508772
+      ],
+      "elongation": 1.493143491499894,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 100.0
+    },
+    {
+      "label": 7,
+      "bbox": [
+        1938,
+        821,
+        96,
+        60
+      ],
+      "area": 3073,
+      "centroid": [
+        1975.989261308168,
+        855.0191994793362
+      ],
+      "mean_deltaE": 101.51786041259766,
+      "peak_deltaE": 103.25080108642578,
+      "mean_hsv": [
+        34.20403514480963,
+        188.5128538887081,
+        223.5496257728604
+      ],
+      "elongation": 3.3295424125263073,
+      "classification": "Potentially Faulty",
+      "subtype": "FullWireOverload",
+      "confidence": 1.0,
+      "severity": 100.0
+    },
+    {
+      "label": 8,
+      "bbox": [
+        1238,
+        836,
+        33,
+        29
+      ],
+      "area": 640,
+      "centroid": [
+        1256.0828125,
+        850.378125
+      ],
+      "mean_deltaE": 95.4146499633789,
+      "peak_deltaE": 98.27213287353516,
+      "mean_hsv": [
+        34.3953125,
+        188.0,
+        224.071875
+      ],
+      "elongation": 1.593628966177741,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 100.0
+    },
+    {
+      "label": 9,
+      "bbox": [
+        2062,
+        1025,
+        19,
+        27
+      ],
+      "area": 247,
+      "centroid": [
+        2068.8299595141702,
+        1041.4331983805669
+      ],
+      "mean_deltaE": 102.3515853881836,
+      "peak_deltaE": 104.30829620361328,
+      "mean_hsv": [
+        35.05263157894737,
+        186.0,
+        227.0
+      ],
+      "elongation": 3.1608108979943355,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 100.0
+    },
+    {
+      "label": 10,
+      "bbox": [
+        2136,
+        1067,
+        7,
+        5
+      ],
+      "area": 31,
+      "centroid": [
+        2139.0,
+        1069.0
+      ],
+      "mean_deltaE": 102.173828125,
+      "peak_deltaE": 102.45243835449219,
+      "mean_hsv": [
+        35.0,
+        185.48387096774192,
+        226.74193548387098
+      ],
+      "elongation": 1.9259254115229196,
+      "classification": "Potentially Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 100.0
+    }
+  ],
+  "thresholds_used": {
+    "t_pot": 10.0,
+    "t_fault": 14.0,
+    "base_t_pot": 10.0,
+    "base_t_fault": 14.0,
+    "slider_percent": 50.0,
+    "scale_applied": 1.0,
+    "source": "slider_scaled",
+    "ratio": 1.4,
+    "mean_ssim": 0.48213694694767656
+  }
+}

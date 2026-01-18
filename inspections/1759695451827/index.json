@@ -1,0 +1,31 @@
+{
+  "inspection_id": "1759695451827",
+  "runs": [
+    {
+      "run_id": "847f45d2-8d07-4074-9e2a-dd35af27aec6",
+      "timestamp": "2025-10-05T20:20:19.840658Z",
+      "slider_percent": 50.0,
+      "baseline_source_type": "inline_upload",
+      "image_level_label": "Faulty",
+      "num_anomalies": 4,
+      "paths": {
+        "baseline": "inspections\\1759695451827\\runs\\847f45d2-8d07-4074-9e2a-dd35af27aec6\\baseline.png",
+        "maintenance": "inspections\\1759695451827\\runs\\847f45d2-8d07-4074-9e2a-dd35af27aec6\\maintenance.png",
+        "overlay": "inspections\\1759695451827\\runs\\847f45d2-8d07-4074-9e2a-dd35af27aec6\\overlay.png",
+        "report": "inspections\\1759695451827\\runs\\847f45d2-8d07-4074-9e2a-dd35af27aec6\\report.json",
+        "anomalies": "inspections\\1759695451827\\runs\\847f45d2-8d07-4074-9e2a-dd35af27aec6\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 10.0,
+        "t_fault": 14.0,
+        "base_t_pot": 10.0,
+        "base_t_fault": 14.0,
+        "slider_percent": 50.0,
+        "scale_applied": 1.0,
+        "source": "slider_scaled",
+        "ratio": 1.4,
+        "mean_ssim": 0.6785224389619211
+      }
+    }
+  ]
+}

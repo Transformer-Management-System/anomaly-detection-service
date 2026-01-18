@@ -1,0 +1,73 @@
+{
+  "runId": "f826caac-1369-49a5-9371-ad7e70320e7d",
+  "inspectionId": "1759692561725",
+  "generatedAt": "2025-10-05T19:30:02.882044Z",
+  "imageLevelLabel": "Potentially Faulty",
+  "anomalies": [
+    {
+      "id": "ai_1",
+      "x": 257,
+      "y": 273,
+      "w": 62,
+      "h": 47,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_2",
+      "x": 353,
+      "y": 280,
+      "w": 171,
+      "h": 84,
+      "confidence": 0.9999999902211198,
+      "severity": "Potentially Faulty",
+      "classification": "PointOverload",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_3",
+      "x": 282,
+      "y": 309,
+      "w": 9,
+      "h": 17,
+      "confidence": 0.9969924031760173,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    },
+    {
+      "id": "ai_4",
+      "x": 169,
+      "y": 344,
+      "w": 62,
+      "h": 33,
+      "confidence": 1.0,
+      "severity": "Potentially Faulty",
+      "classification": "LooseJoint",
+      "comment": "",
+      "source": "ai"
+    }
+  ],
+  "thresholdsUsed": {
+    "t_pot": 8.0,
+    "t_fault": 12.0,
+    "base_t_pot": 8.0,
+    "base_t_fault": 12.0,
+    "slider_percent": 50.0,
+    "scale_applied": 1.0,
+    "source": "slider_scaled",
+    "ratio": 1.5,
+    "mean_ssim": 0.7546561048467311
+  },
+  "paths": {
+    "baseline": "inspections\\1759692561725\\runs\\f826caac-1369-49a5-9371-ad7e70320e7d\\baseline.png",
+    "maintenance": "inspections\\1759692561725\\runs\\f826caac-1369-49a5-9371-ad7e70320e7d\\maintenance.png",
+    "overlay": "inspections\\1759692561725\\runs\\f826caac-1369-49a5-9371-ad7e70320e7d\\overlay.png",
+    "report": "inspections\\1759692561725\\runs\\f826caac-1369-49a5-9371-ad7e70320e7d\\report.json"
+  }
+}

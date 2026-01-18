@@ -1,0 +1,83 @@
+{
+  "transformer_id": "1759682671443",
+  "baseline_path": "inspections\\1759682671443\\runs\\bc884a41-8404-48b6-b516-c6af36334699\\baseline.png",
+  "maintenance_path": "inspections\\1759682671443\\runs\\bc884a41-8404-48b6-b516-c6af36334699\\maintenance.png",
+  "warp_model": "affine",
+  "warp_success": true,
+  "warp_score": 0.7716988468599031,
+  "mean_ssim": 0.5443564125843475,
+  "image_level_label": "Faulty",
+  "t_pot": 8.0,
+  "t_fault": 11.2,
+  "base_t_pot": 10.0,
+  "base_t_fault": 14.0,
+  "slider_percent": 100.0,
+  "scale_applied": 0.7999999999999999,
+  "threshold_source": "slider_scaled",
+  "ratio": 1.4,
+  "blobs": [
+    {
+      "label": 1,
+      "bbox": [
+        1180,
+        808,
+        86,
+        150
+      ],
+      "area": 5900,
+      "centroid": [
+        1214.5962711864406,
+        884.684406779661
+      ],
+      "mean_deltaE": 57.50354766845703,
+      "peak_deltaE": 103.7880859375,
+      "mean_hsv": [
+        12.829491525423729,
+        221.9620338983051,
+        209.8915254237288
+      ],
+      "elongation": 2.901063819958392,
+      "classification": "Faulty",
+      "subtype": "PointOverload",
+      "confidence": 1.0,
+      "severity": 100.0
+    },
+    {
+      "label": 2,
+      "bbox": [
+        1151,
+        959,
+        77,
+        71
+      ],
+      "area": 3190,
+      "centroid": [
+        1192.039184952978,
+        996.8808777429467
+      ],
+      "mean_deltaE": 68.72772216796875,
+      "peak_deltaE": 105.54800415039062,
+      "mean_hsv": [
+        17.929467084639498,
+        228.74075235109717,
+        243.86144200626958
+      ],
+      "elongation": 1.7783865715583582,
+      "classification": "Faulty",
+      "subtype": "LooseJoint",
+      "confidence": 1.0,
+      "severity": 100.0
+    }
+  ],
+  "thresholds_used": {
+    "t_pot": 8.0,
+    "t_fault": 11.2,
+    "base_t_pot": 10.0,
+    "base_t_fault": 14.0,
+    "slider_percent": 100.0,
+    "scale_applied": 0.7999999999999999,
+    "source": "slider_scaled",
+    "ratio": 1.4,
+    "mean_ssim": 0.5443564125843475
+  }
+}

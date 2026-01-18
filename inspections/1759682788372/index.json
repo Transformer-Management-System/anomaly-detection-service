@@ -1,0 +1,57 @@
+{
+  "inspection_id": "1759682788372",
+  "runs": [
+    {
+      "run_id": "e3580f68-374f-4a7b-a9a8-2f3ac6ae8410",
+      "timestamp": "2025-10-05T16:46:52.484061Z",
+      "slider_percent": 50.0,
+      "baseline_source_type": "inline_upload",
+      "image_level_label": "Potentially Faulty",
+      "num_anomalies": 9,
+      "paths": {
+        "baseline": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\baseline.png",
+        "maintenance": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\maintenance.png",
+        "overlay": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\overlay.png",
+        "report": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\report.json",
+        "anomalies": "inspections\\1759682788372\\runs\\e3580f68-374f-4a7b-a9a8-2f3ac6ae8410\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 10.0,
+        "t_fault": 14.0,
+        "base_t_pot": 10.0,
+        "base_t_fault": 14.0,
+        "slider_percent": 50.0,
+        "scale_applied": 1.0,
+        "source": "slider_scaled",
+        "ratio": 1.4,
+        "mean_ssim": 0.48213694694767656
+      }
+    },
+    {
+      "run_id": "3c8c2bb2-417a-4143-801d-fb64bad45b81",
+      "timestamp": "2025-10-05T16:47:26.250959Z",
+      "slider_percent": 0.0,
+      "baseline_source_type": "inline_upload",
+      "image_level_label": "Potentially Faulty",
+      "num_anomalies": 9,
+      "paths": {
+        "baseline": "inspections\\1759682788372\\runs\\3c8c2bb2-417a-4143-801d-fb64bad45b81\\baseline.png",
+        "maintenance": "inspections\\1759682788372\\runs\\3c8c2bb2-417a-4143-801d-fb64bad45b81\\maintenance.png",
+        "overlay": "inspections\\1759682788372\\runs\\3c8c2bb2-417a-4143-801d-fb64bad45b81\\overlay.png",
+        "report": "inspections\\1759682788372\\runs\\3c8c2bb2-417a-4143-801d-fb64bad45b81\\report.json",
+        "anomalies": "inspections\\1759682788372\\runs\\3c8c2bb2-417a-4143-801d-fb64bad45b81\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 12.0,
+        "t_fault": 16.799999999999997,
+        "base_t_pot": 10.0,
+        "base_t_fault": 14.0,
+        "slider_percent": 0.0,
+        "scale_applied": 1.2,
+        "source": "slider_scaled",
+        "ratio": 1.4,
+        "mean_ssim": 0.48213694694767656
+      }
+    }
+  ]
+}

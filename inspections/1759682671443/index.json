@@ -1,0 +1,57 @@
+{
+  "inspection_id": "1759682671443",
+  "runs": [
+    {
+      "run_id": "43f5282c-980f-4593-91ab-0931496044b4",
+      "timestamp": "2025-10-05T16:44:57.960233Z",
+      "slider_percent": 50.0,
+      "baseline_source_type": "inline_upload",
+      "image_level_label": "Faulty",
+      "num_anomalies": 2,
+      "paths": {
+        "baseline": "inspections\\1759682671443\\runs\\43f5282c-980f-4593-91ab-0931496044b4\\baseline.png",
+        "maintenance": "inspections\\1759682671443\\runs\\43f5282c-980f-4593-91ab-0931496044b4\\maintenance.png",
+        "overlay": "inspections\\1759682671443\\runs\\43f5282c-980f-4593-91ab-0931496044b4\\overlay.png",
+        "report": "inspections\\1759682671443\\runs\\43f5282c-980f-4593-91ab-0931496044b4\\report.json",
+        "anomalies": "inspections\\1759682671443\\runs\\43f5282c-980f-4593-91ab-0931496044b4\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 10.0,
+        "t_fault": 14.0,
+        "base_t_pot": 10.0,
+        "base_t_fault": 14.0,
+        "slider_percent": 50.0,
+        "scale_applied": 1.0,
+        "source": "slider_scaled",
+        "ratio": 1.4,
+        "mean_ssim": 0.5443564125843475
+      }
+    },
+    {
+      "run_id": "bc884a41-8404-48b6-b516-c6af36334699",
+      "timestamp": "2025-10-05T16:45:24.110533Z",
+      "slider_percent": 100.0,
+      "baseline_source_type": "inline_upload",
+      "image_level_label": "Faulty",
+      "num_anomalies": 2,
+      "paths": {
+        "baseline": "inspections\\1759682671443\\runs\\bc884a41-8404-48b6-b516-c6af36334699\\baseline.png",
+        "maintenance": "inspections\\1759682671443\\runs\\bc884a41-8404-48b6-b516-c6af36334699\\maintenance.png",
+        "overlay": "inspections\\1759682671443\\runs\\bc884a41-8404-48b6-b516-c6af36334699\\overlay.png",
+        "report": "inspections\\1759682671443\\runs\\bc884a41-8404-48b6-b516-c6af36334699\\report.json",
+        "anomalies": "inspections\\1759682671443\\runs\\bc884a41-8404-48b6-b516-c6af36334699\\anomalies.json"
+      },
+      "thresholdsUsed": {
+        "t_pot": 8.0,
+        "t_fault": 11.2,
+        "base_t_pot": 10.0,
+        "base_t_fault": 14.0,
+        "slider_percent": 100.0,
+        "scale_applied": 0.7999999999999999,
+        "source": "slider_scaled",
+        "ratio": 1.4,
+        "mean_ssim": 0.5443564125843475
+      }
+    }
+  ]
+}
