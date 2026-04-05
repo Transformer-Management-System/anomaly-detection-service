@@ -21,7 +21,6 @@ class BlobDet:
 
 @dataclass
 class DetectionReport:
-    transformer_id: str
     baseline_path: str
     maintenance_path: str
     warp_model: str

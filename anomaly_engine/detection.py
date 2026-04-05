@@ -15,8 +15,8 @@ from .classification import classify_blob_enhanced, summarize_image
 from .visualization import overlay_detections
 
 
-def detect_anomalies(transformer_id: str, baseline_path: str, maintenance_path: str,
-                     out_overlay_path: str, out_json_path: str,
+def detect_anomalies(baseline_path: str, maintenance_path: str,
+                     out_overlay_path: str, out_json_path: str | None = None,
                      slider_percent: float | None = None) -> DetectionReport:
     base_bgr = read_bgr(baseline_path)
     ment_bgr = read_bgr(maintenance_path)
@@ -122,7 +122,6 @@ def detect_anomalies(transformer_id: str, baseline_path: str, maintenance_path: 
     cv.imwrite(out_overlay_path, overlay)
 
     rep = DetectionReport(
-        transformer_id=transformer_id,
         baseline_path=baseline_path,
         maintenance_path=maintenance_path,
         warp_model=warp_model,
@@ -141,21 +140,22 @@ def detect_anomalies(transformer_id: str, baseline_path: str, maintenance_path: 
         ratio=float(ratio)
     )
 
-    with open(out_json_path, "w") as f:
-        json.dump({
-            **{k:v for k,v in asdict(rep).items() if k!='blobs'},
-            "blobs": [asdict(b) for b in blobs],
-            "thresholds_used": {
-                "t_pot": rep.t_pot,
-                "t_fault": rep.t_fault,
-                "base_t_pot": rep.base_t_pot,
-                "base_t_fault": rep.base_t_fault,
-                "slider_percent": rep.slider_percent,
-                "scale_applied": rep.scale_applied,
-                "source": rep.threshold_source,
-                "ratio": rep.ratio,
-                "mean_ssim": rep.mean_ssim
-            }
-        }, f, indent=2)
+    if out_json_path is not None:
+        with open(out_json_path, "w") as f:
+            json.dump({
+                **{k:v for k,v in asdict(rep).items() if k!='blobs'},
+                "blobs": [asdict(b) for b in blobs],
+                "thresholds_used": {
+                    "t_pot": rep.t_pot,
+                    "t_fault": rep.t_fault,
+                    "base_t_pot": rep.base_t_pot,
+                    "base_t_fault": rep.base_t_fault,
+                    "slider_percent": rep.slider_percent,
+                    "scale_applied": rep.scale_applied,
+                    "source": rep.threshold_source,
+                    "ratio": rep.ratio,
+                    "mean_ssim": rep.mean_ssim
+                }
+            }, f, indent=2)
 
     return rep

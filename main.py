@@ -3,12 +3,15 @@ FastAPI Microservice for Anomaly Detection using Computer Vision
 """
 import os
 import uuid
+import base64
 import tempfile
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime
-from fastapi import FastAPI, File, UploadFile, Form, HTTPException
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+import httpx
 import uvicorn
 
 from anomaly_cv import detect_anomalies
@@ -49,57 +52,68 @@ async def health_check():
     return {"status": "healthy"}
 
 
+class DetectRequest(BaseModel):
+    baseline_url: str
+    maintenance_url: str
+    slider_percent: Optional[float] = None
+
+
+class BatchDetectRequest(BaseModel):
+    baseline_url: str
+    maintenance_urls: List[str]
+    slider_percent: Optional[float] = None
+
+
+async def _download_image(client: httpx.AsyncClient, url: str, dest_path: str) -> None:
+    """Download an image from a presigned URL to a local path."""
+    resp = await client.get(url)
+    if resp.status_code != 200:
+        raise HTTPException(
+            status_code=502,
+            detail=f"Failed to download image from URL (HTTP {resp.status_code})"
+        )
+    content_type = resp.headers.get("content-type", "")
+    if content_type and not content_type.startswith("image/"):
+        raise HTTPException(
+            status_code=400,
+            detail=f"URL did not return an image (content-type: {content_type})"
+        )
+    with open(dest_path, "wb") as f:
+        f.write(resp.content)
+
+
 @app.post("/api/v1/detect")
-async def detect_anomalies_endpoint(
-    baseline: UploadFile = File(..., description="Baseline image"),
-    maintenance: UploadFile = File(..., description="Maintenance/inspection image"),
-    transformer_id: str = Form(..., description="Transformer/asset identifier"),
-    slider_percent: Optional[float] = Form(None, description="Threshold adjustment percentage")
-):
+async def detect_anomalies_endpoint(request: DetectRequest):
     """
     Detect anomalies by comparing baseline and maintenance images.
     
+    Accepts presigned S3 URLs for both images. Downloads them, runs the
+    detection pipeline, and returns all results and metadata in the response.
+    
     Args:
-        baseline: Baseline reference image
-        maintenance: Current maintenance/inspection image
-        transformer_id: Unique identifier for the transformer/asset
-        slider_percent: Optional threshold adjustment (-100 to 100)
+        request: JSON body with baseline_url, maintenance_url, and optional slider_percent
     
     Returns:
-        JSON with detection results including anomalies and overlay image path
+        JSON with detection results including anomalies, metrics, and base64 overlay image
     """
     
-    # Validate file types
-    for file in [baseline, maintenance]:
-        if not file.content_type.startswith('image/'):
-            raise HTTPException(
-                status_code=400,
-                detail=f"Invalid file type: {file.filename}. Only image files are accepted."
-            )
-    
-    # Create unique temporary files
     request_id = str(uuid.uuid4())
     baseline_path = os.path.join(TEMP_DIR, f"{request_id}_baseline.png")
     maintenance_path = os.path.join(TEMP_DIR, f"{request_id}_maintenance.png")
     overlay_path = os.path.join(TEMP_DIR, f"{request_id}_overlay.png")
-    report_path = os.path.join(TEMP_DIR, f"{request_id}_report.json")
     
     try:
-        # Save uploaded files
-        with open(baseline_path, "wb") as f:
-            f.write(await baseline.read())
-        
-        with open(maintenance_path, "wb") as f:
-            f.write(await maintenance.read())
+        # Download images from presigned URLs
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            await _download_image(client, request.baseline_url, baseline_path)
+            await _download_image(client, request.maintenance_url, maintenance_path)
         
         # Run anomaly detection
         report = detect_anomalies(
-            transformer_id=transformer_id,
             baseline_path=baseline_path,
             maintenance_path=maintenance_path,
             out_overlay_path=overlay_path,
-            out_json_path=report_path,
-            slider_percent=slider_percent
+            slider_percent=request.slider_percent
         )
         
         # Build response with anomaly details
@@ -116,18 +130,30 @@ async def detect_anomalies_endpoint(
                 },
                 "confidence": float(blob.confidence),
                 "severity": blob.classification,
+                "severityScore": float(blob.severity),
                 "classification": blob.subtype,
-                "area": int(blob.area)
+                "area": int(blob.area),
+                "centroid": {
+                    "x": float(blob.centroid[0]),
+                    "y": float(blob.centroid[1])
+                },
+                "meanDeltaE": float(blob.mean_deltaE),
+                "peakDeltaE": float(blob.peak_deltaE),
+                "meanHsv": {
+                    "h": float(blob.mean_hsv[0]),
+                    "s": float(blob.mean_hsv[1]),
+                    "v": float(blob.mean_hsv[2])
+                },
+                "elongation": float(blob.elongation)
             })
         
-        # Read overlay image as bytes
+        # Encode overlay image as base64
         with open(overlay_path, "rb") as f:
-            overlay_bytes = f.read()
+            overlay_b64 = base64.b64encode(f.read()).decode("utf-8")
         
-        # Prepare response
+        # Prepare response — all metadata included for backend persistence
         response_data = {
             "requestId": request_id,
-            "transformerId": transformer_id,
             "timestamp": datetime.utcnow().isoformat(),
             "imageLevelLabel": report.image_level_label,
             "anomalyCount": len(anomalies),
@@ -135,41 +161,34 @@ async def detect_anomalies_endpoint(
             "metrics": {
                 "meanSsim": float(report.mean_ssim),
                 "warpModel": report.warp_model,
+                "warpSuccess": report.warp_success,
+                "warpScore": float(report.warp_score),
                 "thresholdPotential": float(report.t_pot),
                 "thresholdFault": float(report.t_fault),
                 "basePotential": float(report.base_t_pot),
                 "baseFault": float(report.base_t_fault),
-                "sliderPercent": float(report.slider_percent) if report.slider_percent else None,
-                "scaleApplied": float(report.scale_applied),
+                "sliderPercent": float(report.slider_percent) if report.slider_percent is not None else None,
+                "scaleApplied": float(report.scale_applied) if report.scale_applied is not None else None,
                 "thresholdSource": report.threshold_source,
                 "ratio": report.ratio
             },
-            "overlayImage": {
-                "filename": f"{request_id}_overlay.png",
-                "size": len(overlay_bytes),
-                "path": overlay_path
-            }
+            "overlayImageBase64": overlay_b64
         }
         
         return JSONResponse(content=response_data)
     
+    except HTTPException:
+        raise
+    
     except Exception as e:
-        # Clean up on error
-        for path in [baseline_path, maintenance_path, overlay_path, report_path]:
-            if os.path.exists(path):
-                try:
-                    os.remove(path)
-                except:
-                    pass
-        
         raise HTTPException(
             status_code=500,
             detail=f"Anomaly detection failed: {str(e)}"
         )
     
     finally:
-        # Clean up input files (keep overlay for potential retrieval)
-        for path in [baseline_path, maintenance_path, report_path]:
+        # Clean up all temp files
+        for path in [baseline_path, maintenance_path, overlay_path]:
             if os.path.exists(path):
                 try:
                     os.remove(path)
@@ -178,20 +197,15 @@ async def detect_anomalies_endpoint(
 
 
 @app.post("/api/v1/detect-batch")
-async def detect_anomalies_batch(
-    baseline: UploadFile = File(...),
-    maintenances: list[UploadFile] = File(...),
-    transformer_id: str = Form(...),
-    slider_percent: Optional[float] = Form(None)
-):
+async def detect_anomalies_batch(request: BatchDetectRequest):
     """
     Batch detection: compare one baseline against multiple maintenance images.
     
+    Accepts presigned S3 URLs. Downloads all images, runs detection on each,
+    and returns all results and metadata.
+    
     Args:
-        baseline: Single baseline reference image
-        maintenances: List of maintenance images to compare
-        transformer_id: Transformer/asset identifier
-        slider_percent: Optional threshold adjustment
+        request: JSON body with baseline_url, maintenance_urls list, optional slider_percent
     
     Returns:
         List of detection results for each maintenance image
@@ -202,67 +216,81 @@ async def detect_anomalies_batch(
     baseline_path = os.path.join(TEMP_DIR, f"{request_id}_baseline.png")
     
     try:
-        # Save baseline once
-        with open(baseline_path, "wb") as f:
-            f.write(await baseline.read())
-        
-        # Process each maintenance image
-        for idx, maintenance in enumerate(maintenances):
-            maintenance_path = os.path.join(TEMP_DIR, f"{request_id}_maintenance_{idx}.png")
-            overlay_path = os.path.join(TEMP_DIR, f"{request_id}_overlay_{idx}.png")
-            report_path = os.path.join(TEMP_DIR, f"{request_id}_report_{idx}.json")
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            # Download baseline once
+            await _download_image(client, request.baseline_url, baseline_path)
             
-            try:
-                # Save maintenance image
-                with open(maintenance_path, "wb") as f:
-                    f.write(await maintenance.read())
+            # Process each maintenance image
+            for idx, maint_url in enumerate(request.maintenance_urls):
+                maintenance_path = os.path.join(TEMP_DIR, f"{request_id}_maintenance_{idx}.png")
+                overlay_path = os.path.join(TEMP_DIR, f"{request_id}_overlay_{idx}.png")
                 
-                # Run detection
-                report = detect_anomalies(
-                    transformer_id=f"{transformer_id}_img{idx}",
-                    baseline_path=baseline_path,
-                    maintenance_path=maintenance_path,
-                    out_overlay_path=overlay_path,
-                    out_json_path=report_path,
-                    slider_percent=slider_percent
-                )
-                
-                # Build result
-                anomalies = []
-                for i, blob in enumerate(report.blobs):
-                    x, y, w, h = blob.bbox
-                    anomalies.append({
-                        "id": f"anomaly_{i+1}",
-                        "bbox": {"x": int(x), "y": int(y), "width": int(w), "height": int(h)},
-                        "confidence": float(blob.confidence),
-                        "severity": blob.classification,
-                        "classification": blob.subtype
+                try:
+                    await _download_image(client, maint_url, maintenance_path)
+                    
+                    report = detect_anomalies(
+                        baseline_path=baseline_path,
+                        maintenance_path=maintenance_path,
+                        out_overlay_path=overlay_path,
+                        slider_percent=request.slider_percent
+                    )
+                    
+                    anomalies = []
+                    for i, blob in enumerate(report.blobs):
+                        x, y, w, h = blob.bbox
+                        anomalies.append({
+                            "id": f"anomaly_{i+1}",
+                            "bbox": {"x": int(x), "y": int(y), "width": int(w), "height": int(h)},
+                            "confidence": float(blob.confidence),
+                            "severity": blob.classification,
+                            "severityScore": float(blob.severity),
+                            "classification": blob.subtype,
+                            "area": int(blob.area),
+                            "centroid": {
+                                "x": float(blob.centroid[0]),
+                                "y": float(blob.centroid[1])
+                            },
+                            "meanDeltaE": float(blob.mean_deltaE),
+                            "peakDeltaE": float(blob.peak_deltaE),
+                            "elongation": float(blob.elongation)
+                        })
+                    
+                    with open(overlay_path, "rb") as f:
+                        overlay_b64 = base64.b64encode(f.read()).decode("utf-8")
+                    
+                    results.append({
+                        "imageIndex": idx,
+                        "imageLevelLabel": report.image_level_label,
+                        "anomalyCount": len(anomalies),
+                        "anomalies": anomalies,
+                        "metrics": {
+                            "meanSsim": float(report.mean_ssim),
+                            "warpModel": report.warp_model,
+                            "warpSuccess": report.warp_success,
+                            "warpScore": float(report.warp_score),
+                            "thresholdPotential": float(report.t_pot),
+                            "thresholdFault": float(report.t_fault),
+                            "thresholdSource": report.threshold_source,
+                        },
+                        "overlayImageBase64": overlay_b64
                     })
-                
-                results.append({
-                    "imageIndex": idx,
-                    "filename": maintenance.filename,
-                    "imageLevelLabel": report.image_level_label,
-                    "anomalyCount": len(anomalies),
-                    "anomalies": anomalies,
-                    "meanSsim": float(report.mean_ssim)
-                })
-                
-            finally:
-                # Clean up maintenance files
-                for path in [maintenance_path, overlay_path, report_path]:
-                    if os.path.exists(path):
-                        try:
-                            os.remove(path)
-                        except:
-                            pass
+                    
+                finally:
+                    for path in [maintenance_path, overlay_path]:
+                        if os.path.exists(path):
+                            try:
+                                os.remove(path)
+                            except:
+                                pass
         
         return JSONResponse(content={
             "requestId": request_id,
-            "transformerId": transformer_id,
-            "totalImages": len(maintenances),
+            "totalImages": len(request.maintenance_urls),
             "results": results
         })
+    
+    except HTTPException:
+        raise
     
     except Exception as e:
         raise HTTPException(
@@ -271,7 +299,6 @@ async def detect_anomalies_batch(
         )
     
     finally:
-        # Clean up baseline
         if os.path.exists(baseline_path):
             try:
                 os.remove(baseline_path)
