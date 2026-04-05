@@ -3,7 +3,6 @@ FastAPI Microservice for Anomaly Detection using Computer Vision
 """
 import os
 import uuid
-import base64
 import tempfile
 from typing import Optional, List
 from datetime import datetime
@@ -100,7 +99,6 @@ async def detect_anomalies_endpoint(request: DetectRequest):
     request_id = str(uuid.uuid4())
     baseline_path = os.path.join(TEMP_DIR, f"{request_id}_baseline.png")
     maintenance_path = os.path.join(TEMP_DIR, f"{request_id}_maintenance.png")
-    overlay_path = os.path.join(TEMP_DIR, f"{request_id}_overlay.png")
     
     try:
         # Download images from presigned URLs
@@ -112,7 +110,6 @@ async def detect_anomalies_endpoint(request: DetectRequest):
         report = detect_anomalies(
             baseline_path=baseline_path,
             maintenance_path=maintenance_path,
-            out_overlay_path=overlay_path,
             slider_percent=request.slider_percent
         )
         
@@ -147,10 +144,6 @@ async def detect_anomalies_endpoint(request: DetectRequest):
                 "elongation": float(blob.elongation)
             })
         
-        # Encode overlay image as base64
-        with open(overlay_path, "rb") as f:
-            overlay_b64 = base64.b64encode(f.read()).decode("utf-8")
-        
         # Prepare response — all metadata included for backend persistence
         response_data = {
             "requestId": request_id,
@@ -171,8 +164,7 @@ async def detect_anomalies_endpoint(request: DetectRequest):
                 "scaleApplied": float(report.scale_applied) if report.scale_applied is not None else None,
                 "thresholdSource": report.threshold_source,
                 "ratio": report.ratio
-            },
-            "overlayImageBase64": overlay_b64
+            }
         }
         
         return JSONResponse(content=response_data)
@@ -188,7 +180,7 @@ async def detect_anomalies_endpoint(request: DetectRequest):
     
     finally:
         # Clean up all temp files
-        for path in [baseline_path, maintenance_path, overlay_path]:
+        for path in [baseline_path, maintenance_path]:
             if os.path.exists(path):
                 try:
                     os.remove(path)
@@ -223,7 +215,6 @@ async def detect_anomalies_batch(request: BatchDetectRequest):
             # Process each maintenance image
             for idx, maint_url in enumerate(request.maintenance_urls):
                 maintenance_path = os.path.join(TEMP_DIR, f"{request_id}_maintenance_{idx}.png")
-                overlay_path = os.path.join(TEMP_DIR, f"{request_id}_overlay_{idx}.png")
                 
                 try:
                     await _download_image(client, maint_url, maintenance_path)
@@ -231,7 +222,6 @@ async def detect_anomalies_batch(request: BatchDetectRequest):
                     report = detect_anomalies(
                         baseline_path=baseline_path,
                         maintenance_path=maintenance_path,
-                        out_overlay_path=overlay_path,
                         slider_percent=request.slider_percent
                     )
                     
@@ -255,9 +245,6 @@ async def detect_anomalies_batch(request: BatchDetectRequest):
                             "elongation": float(blob.elongation)
                         })
                     
-                    with open(overlay_path, "rb") as f:
-                        overlay_b64 = base64.b64encode(f.read()).decode("utf-8")
-                    
                     results.append({
                         "imageIndex": idx,
                         "imageLevelLabel": report.image_level_label,
@@ -271,17 +258,15 @@ async def detect_anomalies_batch(request: BatchDetectRequest):
                             "thresholdPotential": float(report.t_pot),
                             "thresholdFault": float(report.t_fault),
                             "thresholdSource": report.threshold_source,
-                        },
-                        "overlayImageBase64": overlay_b64
+                        }
                     })
                     
                 finally:
-                    for path in [maintenance_path, overlay_path]:
-                        if os.path.exists(path):
-                            try:
-                                os.remove(path)
-                            except:
-                                pass
+                    if os.path.exists(maintenance_path):
+                        try:
+                            os.remove(maintenance_path)
+                        except:
+                            pass
         
         return JSONResponse(content={
             "requestId": request_id,

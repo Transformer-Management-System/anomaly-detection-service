@@ -12,11 +12,10 @@ from .morphology import morphology_clean
 from .topology import build_wire_skeleton, find_skeleton_nodes
 from .blobs import blob_props
 from .classification import classify_blob_enhanced, summarize_image
-from .visualization import overlay_detections
 
 
 def detect_anomalies(baseline_path: str, maintenance_path: str,
-                     out_overlay_path: str, out_json_path: str | None = None,
+                     out_json_path: str | None = None,
                      slider_percent: float | None = None) -> DetectionReport:
     base_bgr = read_bgr(baseline_path)
     ment_bgr = read_bgr(maintenance_path)
@@ -118,8 +117,6 @@ def detect_anomalies(baseline_path: str, maintenance_path: str,
                              classification=cls, subtype=subtype, confidence=conf, severity=sev))
 
     image_label = summarize_image(blobs)
-    overlay = overlay_detections(ment_aligned_bgr, blobs)
-    cv.imwrite(out_overlay_path, overlay)
 
     rep = DetectionReport(
         baseline_path=baseline_path,
