@@ -12,9 +12,14 @@
 # Development (auto-reload on file changes)
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
-# Production
+# Production (single process)
+uvicorn main:app --host 0.0.0.0 --port 8000
+
+# Production with multiple workers — Linux/macOS only (Docker recommended for Windows)
 uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
 ```
+
+> **Windows note:** `--workers` is not supported on Windows due to OS-level socket sharing limitations. Use a single process locally, or deploy inside a Linux container where multi-worker mode works correctly.
 
 ---
 
