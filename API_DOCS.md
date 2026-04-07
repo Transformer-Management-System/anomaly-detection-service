@@ -65,7 +65,7 @@ Detect anomalies by comparing a baseline image against a maintenance/inspection 
 |---|---|---|---|
 | `baseline_url` | `string` | ✅ | Presigned S3 URL for the baseline reference image |
 | `maintenance_url` | `string` | ✅ | Presigned S3 URL for the maintenance/inspection image |
-| `slider_percent` | `float` | ❌ | Threshold sensitivity adjustment. Range `0.0–100.0`. `0` = most sensitive (lower thresholds), `100` = least sensitive (higher thresholds). Defaults to adaptive SSIM-based thresholds when omitted. |
+| `slider_percent` | `float` | ❌ | Threshold sensitivity adjustment. Range `0.0–100.0`. `0` = stricter detection (higher thresholds, fewer anomalies), `100` = more sensitive detection (lower thresholds, more anomalies). Defaults to adaptive SSIM-based thresholds when omitted. |
 
 **Example request body**
 ```json

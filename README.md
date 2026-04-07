@@ -128,7 +128,7 @@ POST /api/v1/detect
 - `baseline`: Baseline reference image file
 - `maintenance`: Inspection/maintenance image file
 - `transformer_id`: Unique identifier (string)
-- `slider_percent`: Optional threshold adjustment (-100 to 100)
+- `slider_percent`: Optional threshold adjustment. Lower values are stricter, higher values are more sensitive.
 
 **Example using curl**:
 ```bash
@@ -186,7 +186,7 @@ POST /api/v1/detect-batch
 - `baseline`: Single baseline reference image
 - `maintenances`: Multiple maintenance image files
 - `transformer_id`: Unique identifier
-- `slider_percent`: Optional threshold adjustment
+- `slider_percent`: Optional threshold adjustment. Lower values are stricter, higher values are more sensitive.
 
 **Example using curl**:
 ```bash
@@ -236,11 +236,12 @@ python anomaly_cv.py TF-001 baseline.jpg inspection.jpg output_overlay.png repor
 
 The `slider_percent` parameter allows fine-tuning detection sensitivity:
 
-- **Negative values** (-100 to 0): More sensitive (lower thresholds)
-  - Example: `-50` makes detection 50% more sensitive
-- **Positive values** (0 to 100): Less sensitive (higher thresholds)
-  - Example: `50` makes detection 50% less sensitive
-- **Default** (0 or None): Uses baseline thresholds
+- **Lower values** (closer to `0`): Stricter detection, with higher thresholds and fewer detected anomalies
+  - Example: `0` keeps the strictest slider-adjusted thresholds in the current pipeline
+- **Higher values** (closer to `100`): More sensitive detection, with lower thresholds and more detected anomalies
+  - Example: `100` makes the pipeline more likely to flag smaller color differences
+- **Mid-range values**: Blend between the two; for example `50` is close to the baseline threshold scale used by the code
+- **Default** (not provided): Uses adaptive SSIM-based thresholds
 
 ### CORS Configuration
 
