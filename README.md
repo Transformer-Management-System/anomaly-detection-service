@@ -22,7 +22,7 @@ This service provides REST APIs for detecting anomalies in transformer inspectio
   - `LooseJoint`: Thermal issues near connection points
   - `PointOverload`: Localized overheating
   - `FullWireOverload`: Extended wire overheating
-- **Flexible Thresholding**: Adjustable sensitivity via slider parameter (-100 to +100)
+- **Flexible Thresholding**: Adjustable sensitivity via slider parameter (0 to 100)
 - **Batch Processing**: Compare one baseline against multiple inspection images
 - **RESTful API**: FastAPI-based endpoints with OpenAPI documentation
 
