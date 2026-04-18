@@ -21,6 +21,10 @@ from anomaly_engine.io_utils import read_bgr, to_gray
 from anomaly_engine.alignment import ecc_align
 from anomaly_engine.visualization import overlay_detections
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
 logger = logging.getLogger(__name__)
 
 # Initialize FastAPI app
