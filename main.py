@@ -4,7 +4,7 @@ FastAPI Microservice for Anomaly Detection using Computer Vision
 import os
 import uuid
 import tempfile
-from typing import Optional, List
+from typing import Optional, List, Any, Dict
 from datetime import datetime
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
@@ -81,6 +81,77 @@ async def _download_image(client: httpx.AsyncClient, url: str, dest_path: str) -
         f.write(resp.content)
 
 
+def _build_detect_response(request_id: str, report: Any) -> Dict[str, Any]:
+    """Convert a DetectionReport into the endpoint response payload format."""
+    anomalies = []
+    for i, blob in enumerate(report.blobs):
+        x, y, w, h = blob.bbox
+        anomalies.append({
+            "id": f"anomaly_{i+1}",
+            "bbox": {
+                "x": int(x),
+                "y": int(y),
+                "width": int(w),
+                "height": int(h)
+            },
+            "confidence": float(blob.confidence),
+            "severity": blob.classification,
+            "severityScore": float(blob.severity),
+            "classification": blob.subtype,
+            "area": int(blob.area),
+            "centroid": {
+                "x": float(blob.centroid[0]),
+                "y": float(blob.centroid[1])
+            },
+            "meanDeltaE": float(blob.mean_deltaE),
+            "peakDeltaE": float(blob.peak_deltaE),
+            "meanHsv": {
+                "h": float(blob.mean_hsv[0]),
+                "s": float(blob.mean_hsv[1]),
+                "v": float(blob.mean_hsv[2])
+            },
+            "elongation": float(blob.elongation)
+        })
+
+    return {
+        "requestId": request_id,
+        "timestamp": datetime.utcnow().isoformat(),
+        "imageLevelLabel": report.image_level_label,
+        "anomalyCount": len(anomalies),
+        "anomalies": anomalies,
+        "metrics": {
+            "meanSsim": float(report.mean_ssim),
+            "warpModel": report.warp_model,
+            "warpSuccess": report.warp_success,
+            "warpScore": float(report.warp_score),
+            "thresholdPotential": float(report.t_pot),
+            "thresholdFault": float(report.t_fault),
+            "basePotential": float(report.base_t_pot),
+            "baseFault": float(report.base_t_fault),
+            "sliderPercent": float(report.slider_percent) if report.slider_percent is not None else None,
+            "scaleApplied": float(report.scale_applied) if report.scale_applied is not None else None,
+            "thresholdSource": report.threshold_source,
+            "ratio": report.ratio
+        }
+    }
+
+
+def run_detection_from_paths(
+    baseline_path: str,
+    maintenance_path: str,
+    slider_percent: Optional[float] = None,
+    request_id: Optional[str] = None
+) -> Dict[str, Any]:
+    """Run anomaly detection from local image paths and return endpoint-shaped JSON payload."""
+    resolved_request_id = request_id or str(uuid.uuid4())
+    report = detect_anomalies(
+        baseline_path=baseline_path,
+        maintenance_path=maintenance_path,
+        slider_percent=slider_percent
+    )
+    return _build_detect_response(resolved_request_id, report)
+
+
 @app.post("/api/v1/detect")
 async def detect_anomalies_endpoint(request: DetectRequest):
     """
@@ -106,66 +177,12 @@ async def detect_anomalies_endpoint(request: DetectRequest):
             await _download_image(client, request.baseline_url, baseline_path)
             await _download_image(client, request.maintenance_url, maintenance_path)
         
-        # Run anomaly detection
-        report = detect_anomalies(
+        response_data = run_detection_from_paths(
             baseline_path=baseline_path,
             maintenance_path=maintenance_path,
-            slider_percent=request.slider_percent
+            slider_percent=request.slider_percent,
+            request_id=request_id
         )
-        
-        # Build response with anomaly details
-        anomalies = []
-        for i, blob in enumerate(report.blobs):
-            x, y, w, h = blob.bbox
-            anomalies.append({
-                "id": f"anomaly_{i+1}",
-                "bbox": {
-                    "x": int(x),
-                    "y": int(y),
-                    "width": int(w),
-                    "height": int(h)
-                },
-                "confidence": float(blob.confidence),
-                "severity": blob.classification,
-                "severityScore": float(blob.severity),
-                "classification": blob.subtype,
-                "area": int(blob.area),
-                "centroid": {
-                    "x": float(blob.centroid[0]),
-                    "y": float(blob.centroid[1])
-                },
-                "meanDeltaE": float(blob.mean_deltaE),
-                "peakDeltaE": float(blob.peak_deltaE),
-                "meanHsv": {
-                    "h": float(blob.mean_hsv[0]),
-                    "s": float(blob.mean_hsv[1]),
-                    "v": float(blob.mean_hsv[2])
-                },
-                "elongation": float(blob.elongation)
-            })
-        
-        # Prepare response — all metadata included for backend persistence
-        response_data = {
-            "requestId": request_id,
-            "timestamp": datetime.utcnow().isoformat(),
-            "imageLevelLabel": report.image_level_label,
-            "anomalyCount": len(anomalies),
-            "anomalies": anomalies,
-            "metrics": {
-                "meanSsim": float(report.mean_ssim),
-                "warpModel": report.warp_model,
-                "warpSuccess": report.warp_success,
-                "warpScore": float(report.warp_score),
-                "thresholdPotential": float(report.t_pot),
-                "thresholdFault": float(report.t_fault),
-                "basePotential": float(report.base_t_pot),
-                "baseFault": float(report.base_t_fault),
-                "sliderPercent": float(report.slider_percent) if report.slider_percent is not None else None,
-                "scaleApplied": float(report.scale_applied) if report.scale_applied is not None else None,
-                "thresholdSource": report.threshold_source,
-                "ratio": report.ratio
-            }
-        }
         
         return JSONResponse(content=response_data)
     
